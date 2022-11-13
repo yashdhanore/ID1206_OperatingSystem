@@ -1,1 +1,1 @@
-Hej this is the text file that is going to be read!
+Hello what is up, this message will be sent to the message queue
