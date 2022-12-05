@@ -4,13 +4,13 @@
 #define PAGE_SIZE 256
 
 int TLB_hits = 0;
-int TLB_misses = 0;
 int TLB_counter = 0;
 float operations = 0.0;
 int page_table_faults = 0;
 
 FILE *address_file;
 FILE *backing_store;
+
 typedef struct
 {
     int page_number;
@@ -29,7 +29,6 @@ int searchTLB(int page_number)
         if (TLB[i].page_number == page_number)
             return TLB[i].frame_number;
     }
-
     return -1;
 }
 
@@ -38,7 +37,6 @@ void addToTLB(int page_number, int frame_number)
 {
     TLB[TLB_counter].page_number = page_number;
     TLB[TLB_counter].frame_number = frame_number;
-
     TLB_counter = (TLB_counter + 1) % TLB_SIZE;
 }
 
@@ -73,6 +71,7 @@ int main(int argc, char *argv[])
     while (fscanf(address_file, "%d,", &logical_address) > 0)
     {
         operations++;
+
         // gets the page number from the address
         int page = (logical_address >> 8) & 0xff;
 
@@ -84,8 +83,6 @@ int main(int argc, char *argv[])
 
         if (frame == -1)
         {
-            TLB_misses++;
-
             if (page_table[page] == -1)
             {
                 frame = frame_counter++ << 8;
@@ -100,6 +97,10 @@ int main(int argc, char *argv[])
             // add to TLB
             addToTLB(page, frame);
         }
+        else
+        {
+            TLB_hits++;
+        }
 
         // seek to frame in backing store and read value and sets offset using SEEK_SET
         fseek(backing_store, logical_address, SEEK_SET);
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
         printf("Virtual address: %d Physical address: %d Value: %d\n", logical_address, physical_address, value);
     }
 
-    printf("TLB miss rate: %f%%\n", (TLB_misses / operations) * 100);
+    printf("TLB hit rate: %f%%\n", (TLB_hits / operations) * 100);
     printf("Page fault rate %f%%\n", (page_table_faults / operations) * 100);
 
     return 0;
