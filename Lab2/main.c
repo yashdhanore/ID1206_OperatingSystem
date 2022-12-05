@@ -41,7 +41,6 @@ int main()
     int thread1_count;
     int thread2_count;
     int thread3_count;
-    int s;
 
     pthread_mutex_init(&mutex, NULL);
 
