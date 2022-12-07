@@ -71,12 +71,6 @@ int main(int argc, char *argv[])
         page_table[i] = -1;
     }
 
-    for (int i = 0; i < TLB_SIZE; i++)
-    {
-        TLB[i].page_number = -1;
-        TLB[i].frame_number = -1;
-    }
-
     // read addresses from file
     while (fscanf(address_file, "%d,", &logical_address) > 0)
     {
