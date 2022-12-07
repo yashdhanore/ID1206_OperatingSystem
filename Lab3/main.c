@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define TLB_SIZE 16
-#define PAGE_SIZE 256
+#define PAGE_TABLE_SIZE 256
 
 int TLB_hits = 0;
 int TLB_counter = 0;
 float operations = 0.0;
 int page_table_faults = 0;
 
-FILE *address_file;
 FILE *backing_store;
-
 typedef struct
 {
     int page_number;
@@ -18,7 +16,7 @@ typedef struct
 
 } tlb;
 
-int page_table[PAGE_SIZE];
+int page_table[PAGE_TABLE_SIZE];
 tlb TLB[TLB_SIZE];
 
 // search for page number in TLB and return frame number, -1 if not found
@@ -42,12 +40,24 @@ void addToTLB(int page_number, int frame_number)
 
 int main(int argc, char *argv[])
 {
+    FILE *address_file;
+
     int logical_address;
     int frame_counter = 0;
     char value;
 
-    address_file = fopen("addresses.txt", "r");
     backing_store = fopen("BACKING_STORE.bin", "rb");
+
+    // open the address file
+    if (argc != 2)
+    {
+        printf("Usage: ./a.out <addresses.txt>\n");
+        return 1;
+    }
+    else
+    {
+        address_file = fopen(argv[1], "r");
+    }
 
     // check if files are open
     if (address_file == NULL || backing_store == NULL)
@@ -56,7 +66,7 @@ int main(int argc, char *argv[])
     }
 
     // initialize page table and TLB
-    for (int i = 0; i < PAGE_SIZE; i++)
+    for (int i = 0; i < PAGE_TABLE_SIZE; i++)
     {
         page_table[i] = -1;
     }
