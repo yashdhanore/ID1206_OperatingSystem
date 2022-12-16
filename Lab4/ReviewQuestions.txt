@@ -12,7 +12,7 @@ Q2)
 The 4,990 users can be added to a single group, and then the allow access feature can be used to provide acess to the file to that group. 
 The command : 
 chmod 770 filname
-can be used for setting such permissions and disabling the access of users outside this group, here the filename must be replaced by the name of the target file.
+can be used for setting such permissions and disabling the access of users outside this group, here the filename must be replaced by the name of the target file. Another possibility is the use of general ACL where the specific users can be denied acccess and all remaining will get the access.
 
 Q3)
 The bit map for file allocation must be kept on mass storage, rather than in main memory as in the case of a system crash (memory failure), the free-space list would not be lost. On the other hand if the bit map were to be stored in main memory, the free-space list would be lost.
