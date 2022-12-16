@@ -19,10 +19,12 @@ The bit map for file allocation must be kept on mass storage, rather than in mai
 
 Q4)
 The Strategy for allocation should be decided based on the following criteria favouring the different possible strategies:
-Indexed allocation:
-When the file is randomly accessed and has large size
-Linked allocation:
-When the file is accessed sequentially and has large size
-Contiguous allocation:
-When the file is accessed sequentially however has small size
+1. When the File size is Large:
+  a) File is randomly accessed mostly:
+     Indexed allocation
+  b) File is accessed sequentially mostly:
+     Linked allocation
+2. When the File size is Small:
+  a) File is accessed sequentially mostly:
+     Contiguous allocation
 
