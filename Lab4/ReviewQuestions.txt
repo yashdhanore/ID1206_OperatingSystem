@@ -1,0 +1,4 @@
+Q1)
+FCFS: 30 ,183, 98, 14, 122, 37, 67, 124, 65
+SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 14 (assuming the cylliders are numbered from 0-199)
+C-SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 0, 14 (assuming the cylliders are numbered from 0-199)
