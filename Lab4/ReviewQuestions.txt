@@ -7,3 +7,9 @@ SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 14 (assuming the cylliders are num
 
 C-SCAN is a variation of SCAN which is almost similar however upon reaching the rightmost limit, in C-SCAN the scheduling goes to the least possible cyllinder and then move in an increasing order again untill all cyllinders are visited.
 C-SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 0, 14 (assuming the cylliders are numbered from 0-199)
+
+Q2)
+The 4,990 users can be added to a single group, and then the allow access feature can be used to provide acess to the file to that group. 
+The command : 
+chmod 770 filname
+can be used for setting such permissions and disabling the access of users outside this group, here the filename must be replaced by the name of the target file.
