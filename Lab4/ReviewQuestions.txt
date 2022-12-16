@@ -1,4 +1,9 @@
 Q1)
+FCFS is a simple algorithm which justs serves in first come first serve thus the scheduling would be according to the given qeueu
 FCFS: 30 ,183, 98, 14, 122, 37, 67, 124, 65
+
+SCAN algorithm will start with scheduling cyllinders greater than the current one in accending order until the max possible value and the from there on it moves back in a decending order to the cyllinders lesser than the current one.
 SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 14 (assuming the cylliders are numbered from 0-199)
+
+C-SCAN is a variation of SCAN which is almost similar however upon reaching the rightmost limit, in C-SCAN the scheduling goes to the least possible cyllinder and then move in an increasing order again untill all cyllinders are visited.
 C-SCAN: 30, 37, 65, 67, 98, 122, 124, 183, 199, 0, 14 (assuming the cylliders are numbered from 0-199)
