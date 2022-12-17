@@ -1,0 +1,29 @@
+1)
+
+inode value of file1.txt - 
+242197 -rw-r--r-- 2 yashd yashd 50 Dec 17 21:57 file1.txt
+
+inode value of file2.txt
+242197 -rw-r--r-- 2 yashd yashd 50 Dec 17 21:57 file2.txt
+
+the inode values are same and the text in both the files is same.
+
+2)
+After changing the content of file2 the text in file1 also changes.
+
+3)
+file2 exists after file1.txt is removed
+
+4)
+unlinkat(AT_FDCWD, "file2.txt", 0) = 0
+
+5) indoe numbers are different for both files
+242267 -rw-r--r-- 1 yashd yashd 28 Dec 17 22:07 file3.txt
+242287 lrwxrwxrwx 1 yashd yashd  9 Dec 17 22:07 file4.txt -> file3.txt
+
+6)
+contents of file3 are also altered when contents of file4 are changed. 
+
+7)
+After deleting file3 - if one tries to edit file4 and saves a new file is created called file3
+which contains the contents of file4.
