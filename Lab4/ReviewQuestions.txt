@@ -28,3 +28,5 @@ The Strategy for allocation should be decided based on the following criteria fa
   a) File is accessed sequentially mostly:
      Contiguous allocation
 
+Q5)
+Virtual file system works alike object oriented programming meaning that the System calls are made independent from file system type(general). VFC implements file system in an indirect layer. Moreover, calling each type will be mapped in this layer with its function and data structures with file-system-specific operations. However, the system and its higher level calls are independent from file system.
